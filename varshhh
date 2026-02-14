@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Be My Valentine 💖</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Comic Sans MS', cursive;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #ff4d6d;
+            transition: 0.5s;
+        }
+
+        button {
+            padding: 10px 25px;
+            font-size: 18px;
+            margin: 10px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #yesBtn {
+            background-color: #ff4d6d;
+            color: white;
+        }
+
+        #noBtn {
+            background-color: #888;
+            color: white;
+        }
+
+        .teddy-container {
+            display: none;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .teddy {
+            font-size: 80px;
+            position: relative;
+            animation: hug 2s infinite alternate;
+        }
+
+        @keyframes hug {
+            from { transform: translateX(-10px); }
+            to { transform: translateX(10px); }
+        }
+
+        .kiss {
+            position: absolute;
+            top: 30px;
+            left: 90px;
+            font-size: 30px;
+            animation: kissAnim 1s infinite;
+        }
+
+        @keyframes kissAnim {
+            0% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0; transform: scale(0.5); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 id="question">Will you be my Valentine? 💖</h1>
+    <button id="yesBtn" onclick="sayYes()">Yes 💕</button>
+    <button id="noBtn" onclick="sayNo()">No 💔</button>
+
+    <div class="teddy-container" id="teddyContainer">
+        <div class="teddy">🧸 🧸</div>
+        <div class="kiss">💋</div>
+        <h2>Yayyyy!!! I love youuuuu ra bondammmm 
+        itluuu nee peddha bondam SALAAR😭💖</h2>
+    </div>
+</div>
+
+<script>
+    let noCount = 0;
+
+    function sayNo() {
+        noCount++;
+        let yesBtn = document.getElementById("yesBtn");
+        let question = document.getElementById("question");
+
+        // Make Yes button bigger
+        yesBtn.style.fontSize = (18 + noCount * 10) + "px";
+        yesBtn.style.padding = (10 + noCount * 5) + "px " + (25 + noCount * 10) + "px";
+
+        // Make question cuter
+        const cuteTexts = [
+            "Are you sure? 🥺",
+            "Really really sure? 😢",
+            "Don't break my heart like this 💔😭",
+            "I'll give you chocolates 🍫🥹",
+            "Pretty pleaseeeeee? 💕🥺✨",
+            "I promise to annoy you forever 😚💞",
+            "Last chance princess 👑💖"
+        ];
+
+        if (noCount <= cuteTexts.length) {
+            question.innerText = cuteTexts[noCount - 1];
+        } else {
+            question.innerText = "You can't escape loveee 😈💘";
+        }
+    }
+
+    function sayYes() {
+        document.getElementById("question").style.display = "none";
+        document.getElementById("yesBtn").style.display = "none";
+        document.getElementById("noBtn").style.display = "none";
+        document.getElementById("teddyContainer").style.display = "block";
+    }
+</script>
+
+</body>
+</html>
